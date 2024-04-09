@@ -1,0 +1,106 @@
+<div id="viewport">
+    <div id="sidebar">
+      <header>
+        <a href="#">Exam Hall Seat</a>
+      </header>
+      <ul class="nav text-center">
+        <li class="nav-item " style="margin-left: 20px;">
+          <a class="nav-link" href="#" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"  routerLink="/managerooms">Manage Rooms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/universityrooms">University Exams</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/seatallocation">Seat Allocation</a>
+        </li>
+       
+        <li class="nav-item" style="margin-top: 350px; margin-left: 50px;">
+          <a class="nav-link" href="#" routerLink="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+<!--addrooms-->
+    <h5 class="header" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal;">Add Rooms</h5>
+    <form (ngSubmit)="createrooms()">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-2" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+          <div class="form-group">
+            <label for="room" class="form-label">Room No</label>
+            <input type="text" id="room" name="room" class="form-control" [(ngModel)]="room.roomNo">
+        </div></div>
+
+        <div class="col-2" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+          <div class="form-group">
+            <label for="floor" class="form-label">Floor No</label>
+            <select class="form-select" id="floor" name="floor" [(ngModel)]="room.floorNo">
+              <option selected>-None-</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
+        </div></div>
+        <div class="col-2" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+          <div class="form-group">
+            <label for="block" class="form-label">Block</label>
+            <select class="form-select" id="block" name="block" [(ngModel)]="room.block">
+              <option selected>-None-</option>
+              <option value="Ramanujan">Ramanujan</option>
+              <option value="M.George">M.George</option>
+              <option value="RSB">ESB</option>
+              <option value="SSS">SSS</option>
+            </select>
+        </div></div>
+        <div class="col-2" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+          <div class="form-group">
+            <label for="floor" class="form-label">Available Seats</label>
+            <input type="text" id="floor" name="floor" class="form-control" [(ngModel)]="room.availableSeats">
+        </div></div>
+        <div class="col-1" style="margin-top: 40px;">
+            <button type="submit" class="btn btn-info text-light">ADD</button>
+        </div>
+    </div></form>
+<!--Available room-->
+<h5 class="header" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal; margin-top: 50px;">Available Rooms</h5>
+<div class="row " >
+ 
+    <div class="col-3" style="margin-top: 5px;margin-right: 40px; font-weight: bold;">
+       <input type="search" class="form-control" placeholder="Search" [(ngModel)]="searchtext">
+    </div>
+ 
+
+  <!--Table-->
+   <div class="row">
+    <div class="col-9" style="margin-left: 50px;margin-top: 30px;">
+        <table class="table table-bordered table-responsive table-striped"  >
+            <thead class="table-light"style="text-align:center">
+                <tr>
+                    
+                    <th scope="col">Room No</th>
+                    <th scope="col">Floor No</th>
+                   <th scope="col">Block</th>
+                    <th scope="col">Available Seats</th>
+                    <th scope="col">Action</th>
+                   
+            </thead>
+            <tbody class="table-stripped" style="text-align:center">
+                <tr *ngFor="let roomes of rooms |filter:searchtext">
+                    
+                    <td>{{roomes.roomNo}}</td>
+                    <td>{{roomes.floorNo}}</td>
+                   <td>{{roomes.block}}</td>
+                    <td>{{roomes.availableSeats}}</td>
+                
+                    <td>
+                       
+                        <img src="../../assets/deleteicon.png" style="height: 25px;" (click)="deleterooms(roomes.roomNo)">
+                    </td>
+                </tr> 
+            </tbody>
+   </table> 
+</div>   
+</div> 

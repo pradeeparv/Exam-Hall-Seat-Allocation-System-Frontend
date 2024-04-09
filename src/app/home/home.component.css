@@ -1,0 +1,127 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  } 
+  #viewport {
+    padding-left: 250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  
+  #content {
+    width: 100%;
+    position: relative;
+    margin-right: 0;
+  }
+    
+  #sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 200px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background:#416a59;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  
+  #sidebar header {
+    background-color: #416a59;
+    font-size: 20px;
+    line-height: 52px;
+    text-align: center;
+  }
+  
+  #sidebar header a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+  }
+  
+  #sidebar header a:hover {
+    color: #fff;
+  }
+  
+  #sidebar .nav a{
+    background: none;
+    border-bottom: 1px solid #455A64;
+    color: #CFD8DC;
+    font-size: 14px;
+    padding: 16px 24px;
+  }
+  
+  #sidebar .nav a:hover{
+    background: none;
+    color: #ECEFF1;
+  }
+  
+  #sidebar .nav a i{
+    margin-right: 16px;
+  }
+ 
+  /*homepage*/
+  section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
+}
+ 
+section h1{
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #416a59;
+    text-align: left;
+    margin-bottom: 20px;
+} 
+
+section p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+button{
+    max-width: 50%;
+    border-radius: 50px !important;
+}
+
+#hero .col{
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+#hero .img-col{
+    justify-content: flex-end;
+    margin-top: 100px;
+}
+
+#hero img{
+    max-width: 130%;
+    width: 130%;
+}
+
+/* Styling for the cards */
+#hero .card{
+    box-shadow: 11px 7px 16px #f9f9f9;
+    border: 0;
+    text-align: center;
+}
+
+ #hero .cards .card{
+    width: 18rem;
+}
+
+/* Styling for icon if you add them */
+#hero .icon{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+  

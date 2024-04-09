@@ -1,0 +1,10 @@
+<div class="container">
+    <form id="contactus" action=""  (ngSubmit)="createlist()" >
+        <h4 class="header text-center"  style="color: #8860D0;font-size: medium;">Register</h4>
+        <fieldset> <input placeholder="Email Address" type="email" name="email" autofocus required [(ngModel)]="seat.emailId"> </fieldset>
+        <fieldset> <input placeholder="Username" type="text" name="username"required [(ngModel)]="seat.userName"> </fieldset>
+        <fieldset> <input placeholder="Password" type="password" name="password"  required [(ngModel)]="seat.password">  </fieldset>
+        <fieldset> <input placeholder="Confirm Password" type="password" name="confirmpassword"  required [(ngModel)]="seat.confirmpassword"> </fieldset>
+        <fieldset> <button name="submit" type="submit" id="contactus-submit"><i id="icon" class=""></i> Register</button> </fieldset>
+    </form>
+</div>

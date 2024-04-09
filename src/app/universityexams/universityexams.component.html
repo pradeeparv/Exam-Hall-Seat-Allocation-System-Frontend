@@ -1,0 +1,141 @@
+<div id="viewport">
+    <div id="sidebar">
+        <header>
+            <a href="#">Exam Hall Seat</a>
+        </header>
+        <ul class="nav text-center">
+            <li class="nav-item " style="margin-left: 20px;">
+                <a class="nav-link" href="#" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/managerooms">Manage Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/universityrooms">University Exams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/seatallocation">Seat Allocation</a>
+            </li>
+
+            <li class="nav-item" style="margin-top: 350px; margin-left: 50px;">
+                <a class="nav-link" href="#" routerLink="/login">Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--Semester-->
+    <form (ngSubmit)=" addexams()">
+        <div class="row">
+            <div class="col-3" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+                <div class="form-group">
+                    <label for="sem" class="form-label">Select Semester</label>
+                    <select class="form-select" id="sem" name="sem" [(ngModel)]="exams.semester">
+                        <option selected>-None-</option>
+                        <option value="Semester 1">Semester 1</option>
+                        <option value="Semester 2">Semester 2</option>
+                        <option value="Semester 3">Semester 3</option>
+                        <option value="Semester 4">Semester 4</option>
+                        <option value="Semester 5">Semester 5</option>
+                        <option value="Semester 6">Semester 6</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3" style="margin-top: 10px;margin-right: 10px; font-weight: bold;">
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <select class="form-select" id="subject" name="subject" [(ngModel)]="exams.subject">
+                        <option selected></option>
+                        <option value="P20CS035">P20CS035</option>
+                        <option value="EC98S2">EC98S2</option>
+                        <option value="CS1092M">CS109M</option>
+                        <option value="PC89D20">PC89D20</option>
+                        <option value="M14EOPC2">M14EOPC2</option>
+                        <option value="ESC121">ESC121</option>
+                        <option value="GAC152A">GAC152A</option>
+                        <option value="PO45BON2">PO45BON2</option>
+                        <option value="AS2OP2">AS2OP2</option>
+                        <option value="U17CS087">U17CS087</option>
+                    </select>
+                </div>
+            </div>
+         
+            <!--Addslots-->
+            <h5 class="header"
+                style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal; margin-top: 50px;">Add
+                Slots</h5>
+            <div class="row">
+                <div class="col-2" style="margin-top: 10px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <label for="Date" class="form-label">Date</label>
+                        <input type="date" id="Date" name="Date" class="form-control"  [(ngModel)]="selectedDate">
+                    </div>
+                </div>
+                <div class="col-2" style="margin-top: 11px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <label for="time" class="form-label">Time</label>
+                        <select class="form-select" id="time" name="time" [(ngModel)]="exams.time">
+                            <option selected></option>
+                            <option value="FN">FN</option>
+                            <option value="AN">AN</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="col-2" style="margin-top: 11px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <label for="branches" class="form-label">Branches</label>
+                        <select class="form-select" id="branches" name="branches" [(ngModel)]="exams.branch">
+                            <option selected></option>
+                            <option value="AA">AA</option>
+                            <option value="EC">EC</option>
+                            <option value="CS">CS</option>
+                            <option value="AC">MN</option>
+                            <option value="M1">M1</option>
+                        </select>
+                    </div>
+                </div>
+              
+                <div class="col-1" style="margin-top: 40px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info text-light">Add</button>
+                    </div>
+   
+</div>
+
+<!--exam schedules-->
+<h5 class="header" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal; margin-top: 50px;">
+    Exam Schedules</h5>
+
+
+<!--Table-->
+<div class="row">
+    <div class="col-9" style="margin-left: 50px;margin-top: 30px;">
+        <table class="table table-bordered table-responsive table-striped" id="excel-table">
+            <thead class="table-light" style="text-align:center">
+                <tr>
+                 
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Action</th>
+                    
+            </thead>
+            <tbody class="table-stripped" style="text-align:center">
+                <tr *ngFor="let exams of exam">
+                    <td>{{exams.date|date}}</td>
+                    <td>{{exams.time}}</td>
+                    <td>{{exams.semester}}</td>
+                    <td>{{exams.branch}}</td>
+                    <td>{{exams.subject}}</td>
+
+                    <td>
+                       
+                        <img src="../../assets/deleteicon.png" style="height: 25px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

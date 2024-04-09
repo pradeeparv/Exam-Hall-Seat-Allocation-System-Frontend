@@ -1,0 +1,181 @@
+<div id="viewport">
+    <div id="sidebar">
+        <header>
+            <a href="#">Exam Hall Seat</a>
+        </header>
+        <ul class="nav text-center">
+            <li class="nav-item " style="margin-left: 20px;">
+                <a class="nav-link" href="#" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/managerooms">Manage Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/universityrooms">University Exams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/seatallocation">Seat Allocation</a>
+            </li>
+
+            <li class="nav-item" style="margin-top: 350px; margin-left: 50px;">
+                <a class="nav-link" href="#" routerLink="/login">Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--seat allocation-->
+   
+       
+            <form>
+                <div class="row" style="margin-top: 5px;">
+            <div class="col-4" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+             
+                    <div class="form-group">
+                        <label for="subject" class="form-label" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal;">Subject Code</label>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                           select- {{examid}}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" (change)="getsubject()">
+                              <li><a class="dropdown-item" (click)="examid='EC98S2'; onclick(examid)" >EC98S2</a></li>
+                              <li><a class="dropdown-item" (click)="examid='CS1092M'; onclick(examid)"  >CS1092M</a></li>
+                              <li><a class="dropdown-item" (click)="examid='PO45BON2'; onclick(examid)" >PO45BON2</a></li>
+                              <li><a class="dropdown-item" (click)="examid='PC89D20'; onclick(examid)" >PC89D20</a></li>
+                              <li><a class="dropdown-item" (click)="examid='M14EOPC2'; onclick(examid)" >M14EOPC2</a></li>
+                              <li><a class="dropdown-item" (click)="examid='ESC121'; onclick(examid)" >ESC121</a></li>
+                              <li><a class="dropdown-item" (click)="examid='GAC152A'; onclick(examid)" >GAC152A</a></li>
+                              <li><a class="dropdown-item" (click)="examid='ESC121'; onclick(examid)" >ESC121</a></li>
+                              <li><a class="dropdown-item" (click)="examid='AS2OP2'; onclick(examid)" >AS2OP2</a></li>
+                              <li><a class="dropdown-item" (click)="examid='AES541'; onclick(examid)" >AES541</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        
+                    </div>
+                    
+           
+            <div class="row">
+                <div class="col-3" style="margin-top: 25px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <input type="text" id="Date" name="Date" class="form-control" placeholder="Date" [(ngModel)]="exams.date" >
+                    </div>
+                </div>
+                <div class="col-2" style="margin-top: 25px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <input type="text" id="time" name="time" class="form-control" placeholder="Time" [(ngModel)]="exams.time">
+                        
+                    </div>
+                </div>
+                <div class="col-2" style="margin-top: 25px;margin-right: 30px; font-weight: bold;">
+                    <div class="form-group">
+                        <input type="text" id="branches" name="branches" class="form-control" placeholder="Branches" [(ngModel)]="exams.branch">
+                    </div>
+                </div>
+                <div class="col-3" style="margin-top: 25px;margin-right: 40px; font-weight: bold;">
+                    <div class="form-group">
+                        <input type="text" id="sem" name="sem" class="form-control" placeholder="Semester" [(ngModel)]="exams.semester">
+                        
+                    </div>
+                </div>
+        </div>
+        
+    <!--select exam halls-->
+   <h5 class="header"
+        style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal; margin-top: 40px;">Select Exam
+        Halls</h5>
+   <div class="row">
+        <div class="col-4" style="margin-top: 15px;margin-right: 40px; font-weight: bold;">
+            <input type="search" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchtext">
+        </div>
+
+         <div class="col-4" style="margin-top: 15px; margin-right: 60px; font-weight: bold;">
+                <div class="form-group">
+                  
+                    <input type="file" id="file" name="file" class="form-control" (change)="handleFileInput($event)">         
+                </div>
+            </div>
+    </div>
+     
+            
+        </div>
+
+      
+      <!--first row-->  
+      <div class="row" style="margin-top: 35px;">
+        <div class="col-md-12">
+            <div class="d-flex flex-wrap justify-content-start">
+            <div class="box" *ngFor="let room of rooms |filter:searchtext"  style="border: 1px solid rgb(191, 187, 187); width: 80px; height: 75px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; padding: 10px; margin-right: 15px;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [id]="'room_' + room.roomNo" [value]="room.roomNo" name="selectedRooms" [(ngModel)]="selectedRooms[room.roomNo]" (change)="onCheckboxChange()">
+                    <label class="form-check-label" [for]="'room_' + room.roomNo" style="margin-left: 5px;">
+                        {{room.roomNo}} <br> {{room.availableSeats}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+      
+    
+ <h5 class="header"
+        style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal; margin-top: 40px;">Statistics
+        </h5>
+        <div class="row" style="margin-top: 12px;">
+          <div class="col-3">
+        <p style="font-family: Arial, Helvetica, sans-serif; font-weight: lighter; margin-left: 20px;">Total rooms
+            : {{rooms.length}}</p></div>
+
+             <div class="col-3" >
+        <p style="font-family: Arial, Helvetica, sans-serif; font-weight: lighter; margin-left: 20px;">Available
+            seats :{{totalseats()}} </p></div>
+        
+             <div class="col-3">
+        <p style="font-family: Arial, Helvetica, sans-serif; font-weight: lighter; margin-left: 20px;">Rooms
+            selected :  {{selectedRoomsCount}}</p></div>
+
+
+            <div class="row">
+            <div class="col-3">
+        <p style="font-family: Arial, Helvetica, sans-serif; font-weight: lighter; margin-left: 20px;">Seats
+            selected : {{selectedSeatsCount}}</p></div>
+            
+          <div class="col-3">
+            <p style="font-family: Arial, Helvetica, sans-serif; font-weight: lighter; margin-left: 20px;">Total participants:{{totalparticipants}} </p>
+          </div>
+
+          <div class="col-3">
+            <p style="font-family: Arial, Helvetica, sans-serif; font-weight: lighter; margin-left: 25px;">Remaining seats: {{remainingSeats}}</p>
+          </div>
+     </div>
+
+<div class="row">
+<div class="col-4" style="margin-top: 40px;margin-right: 40px; font-weight: bold;">
+    <div class="form-group" style=" width: 100%;margin-left:600px ;">
+            <button type="submit" class="btn btn-success text-light" (click)="processFile()" >Download File</button>
+        </div>
+    </div>
+   
+
+   <!---- <div *ngFor="let participant of participants">
+        <input type="checkbox" id="{{ participant.id }}" [(ngModel)]="participant.checked" name="participants" [disabled]="participant.disableCheckbox">
+        <label for="{{ participant.id }}">{{ participant.name }}</label>
+      </div>
+      <button (click)="disableCheckboxesForOneMinute()">Disable Checkboxes</button>-->
+
+ <!--<div class="row">
+     <h5 class="header" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;color: teal;">Add Student</h5>-->
+      <!--<div class="col-3" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+              <div class="form-group">
+                <label for="regno" class="form-label">Register No</label>
+                <input type="text" id="regno" name="regno" class="form-control" [(ngModel)]="students.registerNo" >
+            </div></div>
+
+            <div class="col-3" style="margin-top: 10px;margin-right: 40px; font-weight: bold;">
+                <div class="form-group">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" name="name" class="form-control" [(ngModel)]="students.name" >
+              </div></div>-->
+               <!---- <div class="col-1" style="margin-top: 40px;">
+                <button type="submit" class="btn btn-info text-light">ADD</button>
+            </div>-->
+      

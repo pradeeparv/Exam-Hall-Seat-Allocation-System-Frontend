@@ -1,0 +1,18 @@
+
+<h3 class="titles text-success text-center">Exam Hall Seating Arrangement System</h3>
+
+<div class="wrapper" style=" height: 700px;"><!--background-color:#2b6777-->
+ <form class="login" action="" #f="ngForm"  (ngSubmit)="f.form.valid && onlogin()">
+    <p class="title text-success text-center">Login</p>
+    <input type="text" placeholder="Username" [(ngModel)]="formdata.username" name="username" #username="ngModel" required>
+    <span class="text-danger" *ngIf="submit && username.errors?.['required']">username is required</span>
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" [(ngModel)]="formdata.password" name="password" #password="ngModel" required minlength="6">
+    <span class="text-danger" *ngIf="submit && password.errors?.['required']">Password is required</span>
+    <span class="text-danger" *ngIf="submit && password.errors?.['minlength']">Minimum length of password is 6 characters</span>
+    <button type="submit" class="btn btn-success" (click)="submit=true">Sign in</button>
+    <small class="float-right text-success"  routerLink="/register" >New user? Register here</small>
+  </form>
+
+</div>
+
